@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  {{> header}}
+  <link rel="stylesheet" href="index.css">
+  <title>Sakila Home</title>
+</head>
+<body>
+  {{> menu}}
+
+  <main class="container">
+    <h1>Escola de programació - Sakila</h1>
+
+    <section class="cols-2">
+      <article class="card">
+        <h2>Movies</h2>
+
+        <ul class="list">
+          {{#each movies}}
+            <li class="list-item">
+              <strong>{{nom}}</strong><br>
+              <span class="muted">{{any}} - {{actors}}</span>
+            </li>
+          {{/each}}
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Categories</h2>
+
+        <ul class="list">
+          {{#each categories}}
+            <li class="list-item">
+              {{nom}}
+            </li>
+          {{/each}}
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  {{> footer}}
+</body>
+</html>

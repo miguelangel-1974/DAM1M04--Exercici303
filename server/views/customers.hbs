@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  {{> header}}
+  <title>Clients</title>
+</head>
+<body>
+  {{> menu}}
+
+  <main class="container">
+    <h1>Llistat de Clients</h1>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Client</th>
+          <th>Email</th>
+          <th>Lloguers</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each customers}}
+          <tr>
+            <td>{{first_name}} {{last_name}}</td>
+            <td>{{email}}</td>
+            <td>{{lloguers}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </main>
+
+  {{> footer}}
+</body>
+</html>

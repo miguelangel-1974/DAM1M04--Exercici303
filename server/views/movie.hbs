@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  {{> header}}
+  <title>{{movie.title}}</title>
+</head>
+<body>
+  {{> menu}}
+
+  <main class="container">
+    <h1>{{movie.title}}</h1>
+
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Títol</th>
+          <td>{{movie.title}}</td>
+        </tr>
+        <tr>
+          <th>Descripció</th>
+          <td>{{movie.description}}</td>
+        </tr>
+        <tr>
+          <th>Any</th>
+          <td>{{movie.release_year}}</td>
+        </tr>
+        <tr>
+          <th>Durada</th>
+          <td>{{movie.length}} min</td>
+        </tr>
+        <tr>
+          <th>Rating</th>
+          <td>{{movie.rating}}</td>
+        </tr>
+        <tr>
+          <th>Preu lloguer</th>
+          <td>{{movie.rental_rate}} €</td>
+        </tr>
+        <tr>
+          <th>Idioma</th>
+          <td>{{movie.language}}</td>
+        </tr>
+        <tr>
+          <th>Actors</th>
+          <td>{{movie.actors}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <a href="/movieEdit?id={{movie.film_id}}">Editar pel·lícula</a>
+    &nbsp;|&nbsp;
+    <a href="/movies">Tornar al llistat</a>
+  </main>
+
+  {{> footer}}
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  {{> header}}
+  <title>Afegir Pel·lícula</title>
+</head>
+<body>
+  {{> menu}}
+
+  <main class="container">
+    <h1>Afegir nova pel·lícula</h1>
+
+    <form method="POST" action="/afegirPeli">
+
+      <label>Títol:</label><br>
+      <input type="text" name="title" required><br><br>
+
+      <label>Descripció:</label><br>
+      <textarea name="description" rows="3" cols="40"></textarea><br><br>
+
+      <label>Any:</label><br>
+      <input type="number" name="release_year"><br><br>
+
+      <label>Idioma:</label><br>
+      <select name="language_id">
+        {{#each languages}}
+          <option value="{{language_id}}">{{name}}</option>
+        {{/each}}
+      </select><br><br>
+
+      <button type="submit">Afegir pel·lícula</button>
+      &nbsp;
+      <a href="/movies">Cancel·lar</a>
+
+    </form>
+  </main>
+
+  {{> footer}}
+</body>
+</html>
