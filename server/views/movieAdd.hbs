@@ -8,30 +8,57 @@
   {{> menu}}
 
   <main class="container">
-    <h1>Afegir nova pel·lícula</h1>
+    <h1>Afegir Pel·lícula</h1>
 
-    <form method="POST" action="/afegirPeli">
-
-      <label>Títol:</label><br>
-      <input type="text" name="title" required><br><br>
-
-      <label>Descripció:</label><br>
-      <textarea name="description" rows="3" cols="40"></textarea><br><br>
-
-      <label>Any:</label><br>
-      <input type="number" name="release_year"><br><br>
-
-      <label>Idioma:</label><br>
-      <select name="language_id">
-        {{#each languages}}
-          <option value="{{language_id}}">{{name}}</option>
-        {{/each}}
-      </select><br><br>
-
-      <button type="submit">Afegir pel·lícula</button>
-      &nbsp;
-      <a href="/movies">Cancel·lar</a>
-
+    <form action="/afegirPeli" method="POST">
+      <table>
+        <tr>
+          <td><label>Títol:</label></td>
+          <td><input type="text" name="title" required></td>
+        </tr>
+        <tr>
+          <td><label>Descripció:</label></td>
+          <td><textarea name="description" rows="3" cols="40"></textarea></td>
+        </tr>
+        <tr>
+          <td><label>Any:</label></td>
+          <td><input type="number" name="release_year" min="1900" max="2100"></td>
+        </tr>
+        <tr>
+          <td><label>Idioma:</label></td>
+          <td>
+            <select name="language_id">
+              {{#each languages}}
+                <option value="{{language_id}}">{{name}}</option>
+              {{/each}}
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label>Durada (minuts):</label></td>
+          <td><input type="number" name="length" min="1"></td>
+        </tr>
+        <tr>
+          <td><label>Classificació:</label></td>
+          <td>
+            <select name="rating">
+              <option value="G">G</option>
+              <option value="PG">PG</option>
+              <option value="PG-13">PG-13</option>
+              <option value="R">R</option>
+              <option value="NC-17">NC-17</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <button type="submit">Afegir</button>
+            &nbsp;
+            <a href="/movies">Cancel·lar</a>
+          </td>
+        </tr>
+      </table>
     </form>
   </main>
 
