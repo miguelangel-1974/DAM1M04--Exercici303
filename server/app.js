@@ -60,9 +60,10 @@ app.get('/', async (req, res) => {
     const moviesRows = await db.query(`
       SELECT f.title as nom, f.release_year as any, GROUP_CONCAT(a.first_name, ' ', a.last_name SEPARATOR ', ') as actors
       FROM film f
-      JOIN film_actor fa ON f.film_id = fa.film_id
-      JOIN actor a ON fa.actor_id = a.actor_id
-      GROUP BY f.film_id LIMIT 5`);
+      LEFT JOIN film_actor fa ON f.film_id = fa.film_id
+      LEFT JOIN actor a ON fa.actor_id = a.actor_id
+      GROUP BY f.film_id
+      ORDER BY f.film_id DESC LIMIT 5`);
     const categoriesRows = await db.query('SELECT name as nom FROM category LIMIT 5');
     
     // Transformar les dades a JSON (per les plantilles .hbs)
@@ -107,7 +108,7 @@ app.get('/movies', async (req, res) => {
       LEFT JOIN film_actor fa ON f.film_id = fa.film_id
       LEFT JOIN actor a ON fa.actor_id = a.actor_id
       GROUP BY f.film_id
-      LIMIT 15`);
+      ORDER BY f.film_id DESC LIMIT 15`);
 
     // Transformar les dades a JSON (per les plantilles .hbs)
     const moviesJson = db.table_to_json(moviesRows, {
